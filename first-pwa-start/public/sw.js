@@ -1,12 +1,13 @@
-self.addEventListener("install", (event) => {
-  console.log("Install event", event);
+
+self.addEventListener('install', function(event) {
+  console.log('[Service Worker] Installing Service Worker ...', event);
 });
-self.addEventListener("active", (event) => {
-  console.log("Active event", event);
+
+self.addEventListener('activate', function(event) {
+  console.log('[Service Worker] Activating Service Worker ....', event);
   return self.clients.claim();
 });
 
-self.addEventListener("fetch", (event) => {
-  console.log("Fetching event", event);
-  event.repsondWith(fetch(event.request));
+self.addEventListener('fetch', function(event) {
+  event.respondWith(fetch(event.request));
 });
